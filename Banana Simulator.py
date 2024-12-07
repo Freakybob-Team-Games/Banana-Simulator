@@ -1,10 +1,10 @@
 
 import time
 import math
-import sys
 import random
 import threading
-
+def end():
+    raise SystemExit
 print("It's a summer night, you're drunk when one of your friends jokes about a banana business")
 time.sleep(3)
 print("You then think, 'It might work out'")
@@ -22,17 +22,27 @@ print("Each banana will cost you 25 cents.")
 print("Goal: Get as much cash as possible, don't go bankrupt or sell all your bananas!")
 stockmarket = random.uniform(0.10, 0.40)
 stockmarket = round(stockmarket, 2)
+day = 0 
 
 def generate_random_stock_price():
     while True:
         stockmarket = random.uniform(0.10, 0.40)
         stockmarket = round(stockmarket, 2)
         time.sleep(30)
+        
+def day_system():
+    while True:
+        day =+ 1
+        time.sleep(random.randint(120,180))
+        print("Day " + str(day))
 
 stock_thread = threading.Thread(target=generate_random_stock_price)
 stock_thread.daemon = True
 stock_thread.start()
 
+day_thread = threading.Thread(target=day_system)
+day_thread.daemon = True
+day_thread.start()
 
 while True:
     try:
@@ -55,7 +65,7 @@ cash = cash - (bananns * 0.25)
 if cash < 0:
     print("You already went fucking bankrupt. Nerd.")
     print("You are now: $" + str(cash) + " in debt!")
-    sys.exit()
+    end()
 else:
     print("Your cash is now: $" + str(cash))
 
@@ -72,11 +82,11 @@ while True:
                 print("YOU SOLD MORE THAN YOU HAVE! FRAUD! FRAUD!")
                 time.sleep(1)
                 print("You're now in jail. Luni is in here too, watch out buddy!")
-                sys.exit()
+                end()
             elif bananns == 0:
                 print("You have no bananas anymore. Dang, crazy.")
                 print("Game over")
-                sys.exit()
+                end()
             else:
                 cash = cash + (sell * stockmarket)
                 print("Your cash is now: $" + str(cash))
@@ -92,7 +102,7 @@ while True:
             bananns += buy
             if cash < 0:
                 print("You went broke, your wife left you because of this")
-                sys.exit()
+                end()
             else:
                 print("Your cash is now: $" + str(cash))
                 print("You now have: " + str(bananns) + " bananas!")
