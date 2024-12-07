@@ -45,7 +45,7 @@ day_thread.start()
 
 while True:
     try:
-        bananns = input("how many bananas do you want? ")
+        bananns = input("how many bananas do you want? \n")
         if bananns == 'uwu' or "~" in bananns:
             print("...")
             time.sleep(2)
@@ -71,10 +71,10 @@ else:
 print("Bananas: " + str(bananns))
 time.sleep(0.5)
 while True:
-    menuchoice = input("what are you gonna do now").lower()
+    menuchoice = input("what are you gonna do now\n").lower()
     if menuchoice == 'sell':
         try:
-            sell = int(input(f"how many sell? (current stock price: {stockmarket})"))
+            sell = int(input(f"how many sell? (current stock price: {stockmarket})\n"))
             bananns -= sell
             if bananns < 0:
                 print("YOU SOLD MORE THAN YOU HAVE! FRAUD! FRAUD!")
@@ -92,10 +92,10 @@ while True:
         except ValueError:
             print("CRITICAL EXCEPTION! bananas invalid :(")
     elif menuchoice == 'stocks':
-        print("Current stocks are: " + str(stockmarket) + " per banana!")
+        print("Current stocks are: " + str(stockmarket) + " per banana!\n")
     elif menuchoice == 'buy':
         try:
-            buy = int(input(f"buy how many bananas? (current stock price: {stockmarket})"))
+            buy = int(input(f"buy how many bananas? (current stock price: {stockmarket})\n"))
             cash -= (buy * stockmarket)
             bananns += buy
             if cash < 0:
