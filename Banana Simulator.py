@@ -37,7 +37,7 @@ stock_thread.start()
 while True:
     try:
         bananns = input("how many bananas do you want? ")
-        if bananns == 'uwu':
+        if bananns == 'uwu' or "~" in bananns:
             print("...")
             time.sleep(2)
             print("You do realize that just because it's from freakybob doesn't mean you have to be freaky")
