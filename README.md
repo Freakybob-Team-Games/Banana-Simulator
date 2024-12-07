@@ -1,4 +1,4 @@
 # Banana Simulator
 Run a banana market!
 # Credits
-@nameswastaken for like literally everything
+[@nameswastaken](https://github.com/nameswastaken) for like literally everything
