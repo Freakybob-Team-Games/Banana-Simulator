@@ -1,10 +1,9 @@
-
 import time
-import math
 import random
 import threading
 def end():
     raise SystemExit
+
 print("It's a summer night, you're drunk when one of your friends jokes about a banana business")
 time.sleep(3)
 print("You then think, 'It might work out'")
@@ -20,21 +19,21 @@ cash = 50
 print("Your current cash is: $" + str(cash))
 print("Each banana will cost you 25 cents.")
 print("Goal: Get as much cash as possible, don't go bankrupt or sell all your bananas!")
-stockmarket = random.uniform(0.10, 0.40)
-stockmarket = round(stockmarket, 2)
+stockmarket = round(random.uniform(0.10, 0.40), 2)
 day = 0 
 
 def generate_random_stock_price():
+    global stockmarket
     while True:
-        stockmarket = random.uniform(0.10, 0.40)
-        stockmarket = round(stockmarket, 2)
+        stockmarket = round(random.uniform(0.10, 0.40), 2)
         time.sleep(30)
         
 def day_system():
+    global day
     while True:
-        day =+ 1
+        day += 1
+        print(f" Day {day}")
         time.sleep(random.randint(120,180))
-        print("Day " + str(day))
 
 stock_thread = threading.Thread(target=generate_random_stock_price)
 stock_thread.daemon = True
@@ -55,13 +54,13 @@ while True:
             print("Right..?")
             time.sleep(4)
             print("Anyway, go to jail.")
-            continue
+            end()
         bananns = int(bananns)
         break
     except ValueError:
         print("Gtfo now, you failure")
 
-cash = cash - (bananns * 0.25)
+cash -= (bananns * 0.25)
 if cash < 0:
     print("You already went fucking bankrupt. Nerd.")
     print("You are now: $" + str(cash) + " in debt!")
@@ -69,7 +68,6 @@ if cash < 0:
 else:
     print("Your cash is now: $" + str(cash))
 
-bananns = int(bananns)
 print("Bananas: " + str(bananns))
 time.sleep(0.5)
 while True:
@@ -77,7 +75,7 @@ while True:
     if menuchoice == 'sell':
         try:
             sell = int(input(f"how many sell? (current stock price: {stockmarket})"))
-            bananns = bananns - sell
+            bananns -= sell
             if bananns < 0:
                 print("YOU SOLD MORE THAN YOU HAVE! FRAUD! FRAUD!")
                 time.sleep(1)
@@ -88,14 +86,14 @@ while True:
                 print("Game over")
                 end()
             else:
-                cash = cash + (sell * stockmarket)
+                cash += (sell * stockmarket)
                 print("Your cash is now: $" + str(cash))
                 print("You now have: " + str(bananns) + " bananas!")
         except ValueError:
             print("CRITICAL EXCEPTION! bananas invalid :(")
-    if menuchoice == 'stocks':
+    elif menuchoice == 'stocks':
         print("Current stocks are: " + str(stockmarket) + " per banana!")
-    if menuchoice == 'buy':
+    elif menuchoice == 'buy':
         try:
             buy = int(input(f"buy how many bananas? (current stock price: {stockmarket})"))
             cash -= (buy * stockmarket)
@@ -108,8 +106,7 @@ while True:
                 print("You now have: " + str(bananns) + " bananas!")
         except ValueError:
             print("CRITICAL EXCEPTION! bananas invalid :(")
-    if menuchoice == 'rodrick':
+    elif menuchoice == 'rodrick':
         print("Rodrick took 10% of your bananas.")
-        bananns = (90 / 100) * bananns
-        bananns = round(bananns)
+        bananns = round(bananns * 0.9)
         print("Your bananas are now: " + str(bananns))
