@@ -35,6 +35,9 @@ def day_system():
     global day
     while True:
         day += 1
+        data['day'] = str(day)
+        with open('F.json', 'w') as JSONFile:
+            json.dump(data, JSONFile, ensure_ascii=False, indent=4)
         print(f" Day {day}")
         time.sleep(random.randint(120,180))
 
