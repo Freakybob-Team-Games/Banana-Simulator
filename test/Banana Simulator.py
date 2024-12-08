@@ -123,10 +123,18 @@ while True:
             else:
                 print("Your cash is now: $" + str(cash))
                 print("You now have: " + str(bananns) + " bananas!")
-                data['bananas'] = bananns
+                data['bananas'] = str(bananns)
+                with open('F.json', 'w') as JSONFile:
+                    json.dump(data, JSONFile, ensure_ascii=False, indent=4)
+                data['cash'] = str(cash)
+                with open('F.json', 'w') as JSONFile:
+                    json.dump(data, JSONFile, ensure_ascii=False, indent=4)
         except ValueError:
             print("CRITICAL EXCEPTION! bananas invalid :(")
     elif menuchoice == 'rodrick':
         print("Rodrick took 10% of your bananas.")
         bananns = round(bananns * 0.9)
         print("Your bananas are now: " + str(bananns))
+        data['bananas'] = str(bananns)
+        with open('F.json', 'w') as JSONFile:
+            json.dump(data, JSONFile, ensure_ascii=False, indent=4)
