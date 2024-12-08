@@ -3,5 +3,11 @@
     "name": "site.freakybob.Banana",
     "soft_ver": "1.4",
     "description": "Banana Simulator: a stock market simulation with bananas.",
-    "custom": "Put custom lines below (Documentation, website, etc)!"
+    "custom": "Put custom lines below (Documentation, website, etc)!",
+    "bananas": "0",
+    "bananas.provider": "site.freakybob",
+    "day": "0",
+    "day.provider": "site.freakybob",
+    "cash": "50",
+    "cash.provider": "site.freakybob"
 }

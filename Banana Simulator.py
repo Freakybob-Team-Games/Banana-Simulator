@@ -1,19 +1,22 @@
 import time
 import random
 import threading
+import json
+file = open('F.json', 'r+')
+data = json.load(file)
 def end():
     raise SystemExit
 
-print("It's a summer night, you're drunk when one of your friends jokes about a banana business")
-time.sleep(3)
-print("You then think, 'It might work out'")
-time.sleep(2)
-print("You walk out the bar and go on your computer")
-time.sleep(2)
-print("'How to make a profit with bananas'")
-time.sleep(2)
-print("You start a business and begin your journey")
-time.sleep(2)
+# print("It's a summer night, you're drunk when one of your friends jokes about a banana business")
+# time.sleep(3)
+# print("You then think, 'It might work out'")
+# time.sleep(2)
+# print("You walk out the bar and go on your computer")
+# time.sleep(2)
+# print("'How to make a profit with bananas'")
+# time.sleep(2)
+# print("You start a business and begin your journey")
+# time.sleep(2)
 
 cash = 50
 print("Your current cash is: $" + str(cash))
@@ -56,9 +59,13 @@ while True:
             print("Anyway, go to jail.")
             end()
         bananns = int(bananns)
+        # data.update({"bananas": bananns}) | this works, but doesn't add "quotes" around the number
+        data['bananas'] = str(bananns)
+        with open('F.json', 'w') as JSONFile:
+            json.dump(data, JSONFile, ensure_ascii=False, indent=4)
         break
     except ValueError:
-        print("Gtfo now, you failure")
+        print("Gtfo now, you failure (ValueError)")
 
 cash -= (bananns * 0.25)
 if cash < 0:
@@ -67,6 +74,9 @@ if cash < 0:
     end()
 else:
     print("Your cash is now: $" + str(cash))
+    data['cash'] = str(cash)
+    with open('F.json', 'w') as JSONFile:
+        json.dump(data, JSONFile, ensure_ascii=False, indent=4)
 
 print("Bananas: " + str(bananns))
 time.sleep(0.5)
@@ -84,11 +94,20 @@ while True:
             elif bananns == 0:
                 print("You have no bananas anymore. Dang, crazy.")
                 print("Game over")
+                data['bananas'] = str(bananns)
+                with open('F.json', 'w') as JSONFile:
+                    json.dump(data, JSONFile, ensure_ascii=False, indent=4)
                 end()
             else:
                 cash += (sell * stockmarket)
                 print("Your cash is now: $" + str(cash))
                 print("You now have: " + str(bananns) + " bananas!")
+                data['bananas'] = str(bananns)
+                with open('F.json', 'w') as JSONFile:
+                    json.dump(data, JSONFile, ensure_ascii=False, indent=4)
+                data['cash'] = str(cash)
+                with open('F.json', 'w') as JSONFile:
+                    json.dump(data, JSONFile, ensure_ascii=False, indent=4)
         except ValueError:
             print("CRITICAL EXCEPTION! bananas invalid :(")
     elif menuchoice == 'stocks':
@@ -104,9 +123,18 @@ while True:
             else:
                 print("Your cash is now: $" + str(cash))
                 print("You now have: " + str(bananns) + " bananas!")
+                data['bananas'] = str(bananns)
+                with open('F.json', 'w') as JSONFile:
+                    json.dump(data, JSONFile, ensure_ascii=False, indent=4)
+                data['cash'] = str(cash)
+                with open('F.json', 'w') as JSONFile:
+                    json.dump(data, JSONFile, ensure_ascii=False, indent=4)
         except ValueError:
             print("CRITICAL EXCEPTION! bananas invalid :(")
     elif menuchoice == 'rodrick':
         print("Rodrick took 10% of your bananas.")
         bananns = round(bananns * 0.9)
         print("Your bananas are now: " + str(bananns))
+        data['bananas'] = str(bananns)
+        with open('F.json', 'w') as JSONFile:
+            json.dump(data, JSONFile, ensure_ascii=False, indent=4)
