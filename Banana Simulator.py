@@ -4,7 +4,6 @@ import threading
 import json
 jsonSave = open("F.json", "r+")
 data = json.loads(jsonSave)
-field_key = 'age'
 def end():
     raise SystemExit
 
@@ -60,6 +59,7 @@ while True:
             print("Anyway, go to jail.")
             end()
         bananns = int(bananns)
+        data['bananas'] = bananns
         break
     except ValueError:
         print("Gtfo now, you failure")
@@ -88,6 +88,7 @@ while True:
             elif bananns == 0:
                 print("You have no bananas anymore. Dang, crazy.")
                 print("Game over")
+                data['bananas'] = 0
                 end()
             else:
                 cash += (sell * stockmarket)
@@ -108,6 +109,7 @@ while True:
             else:
                 print("Your cash is now: $" + str(cash))
                 print("You now have: " + str(bananns) + " bananas!")
+                data['bananas'] = bananns
         except ValueError:
             print("CRITICAL EXCEPTION! bananas invalid :(")
     elif menuchoice == 'rodrick':
