@@ -1,6 +1,10 @@
 import time
 import random
 import threading
+import json
+jsonSave = open("F.json", "r+")
+data = json.loads(jsonSave)
+field_key = 'age'
 def end():
     raise SystemExit
 
