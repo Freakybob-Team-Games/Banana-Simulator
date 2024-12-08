@@ -7,16 +7,16 @@ data = json.load(file)
 def end():
     raise SystemExit
 
-# print("It's a summer night, you're drunk when one of your friends jokes about a banana business")
-# time.sleep(3)
-# print("You then think, 'It might work out'")
-# time.sleep(2)
-# print("You walk out the bar and go on your computer")
-# time.sleep(2)
-# print("'How to make a profit with bananas'")
-# time.sleep(2)
-# print("You start a business and begin your journey")
-# time.sleep(2)
+print("It's a summer night, you're drunk when one of your friends jokes about a banana business")
+time.sleep(3)
+print("You then think, 'It might work out'")
+time.sleep(2)
+print("You walk out the bar and go on your computer")
+time.sleep(2)
+print("'How to make a profit with bananas'")
+time.sleep(2)
+print("You start a business and begin your journey")
+time.sleep(2)
 
 cash = 50
 print("Your current cash is: $" + str(cash))
